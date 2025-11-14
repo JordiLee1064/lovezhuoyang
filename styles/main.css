@@ -137,175 +137,6 @@ main.pages {
   flex-direction: column;
   gap: 32px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.intro-decorations {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* 气球动画 */
-.balloon {
-  position: absolute;
-  font-size: 2rem;
-  opacity: 0;
-  animation: balloon-rise 8s ease-in infinite;
-  filter: drop-shadow(0 4px 8px rgba(255, 91, 123, 0.3));
-}
-
-.balloon-1 {
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.balloon-2 {
-  left: 25%;
-  animation-delay: 1.5s;
-}
-
-.balloon-3 {
-  left: 50%;
-  animation-delay: 0.5s;
-}
-
-.balloon-4 {
-  left: 75%;
-  animation-delay: 2s;
-}
-
-.balloon-5 {
-  left: 90%;
-  animation-delay: 1s;
-}
-
-@keyframes balloon-rise {
-  0% {
-    bottom: -100px;
-    opacity: 0;
-    transform: translateX(0) scale(0.8);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    bottom: 100vh;
-    opacity: 0;
-    transform: translateX(30px) scale(1.2);
-  }
-}
-
-/* 星星闪烁动画 */
-.sparkle {
-  position: absolute;
-  font-size: 1.5rem;
-  opacity: 0;
-  animation: sparkle-twinkle 3s ease-in-out infinite;
-}
-
-.sparkle-1 {
-  top: 15%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.sparkle-2 {
-  top: 25%;
-  right: 20%;
-  animation-delay: 0.6s;
-}
-
-.sparkle-3 {
-  top: 35%;
-  left: 80%;
-  animation-delay: 1.2s;
-}
-
-.sparkle-4 {
-  top: 20%;
-  left: 60%;
-  animation-delay: 0.3s;
-}
-
-.sparkle-5 {
-  top: 30%;
-  right: 15%;
-  animation-delay: 0.9s;
-}
-
-@keyframes sparkle-twinkle {
-  0%, 100% {
-    opacity: 0;
-    transform: scale(0.5) rotate(0deg);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2) rotate(180deg);
-  }
-}
-
-/* 爱心飘落动画 */
-.heart-fall {
-  position: absolute;
-  font-size: 1.8rem;
-  opacity: 0;
-  animation: heart-fall 6s linear infinite;
-}
-
-.heart-1 {
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.heart-2 {
-  left: 40%;
-  animation-delay: 1.2s;
-}
-
-.heart-3 {
-  left: 60%;
-  animation-delay: 0.6s;
-}
-
-.heart-4 {
-  left: 80%;
-  animation-delay: 1.8s;
-}
-
-.heart-5 {
-  left: 50%;
-  animation-delay: 0.3s;
-}
-
-@keyframes heart-fall {
-  0% {
-    top: -50px;
-    opacity: 0;
-    transform: translateX(0) rotate(0deg);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    top: 100vh;
-    opacity: 0;
-    transform: translateX(-20px) rotate(360deg);
-  }
-}
-
-.page-intro.in-view .balloon,
-.page-intro.in-view .sparkle,
-.page-intro.in-view .heart-fall {
-  animation-play-state: running;
 }
 
 .intro-image-container {
@@ -319,7 +150,6 @@ main.pages {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1s ease, transform 1s ease;
-  z-index: 2;
 }
 
 .page-intro.in-view .intro-image-container {
@@ -351,8 +181,6 @@ main.pages {
   font-family: var(--font-title);
   max-width: 680px;
   line-height: 1.6;
-  position: relative;
-  z-index: 2;
 }
 
 .page-timeline {
@@ -689,17 +517,17 @@ main.pages {
 
 .celebration-inner {
   position: relative;
-  width: min(920px, 90vw);
-  max-height: 90vh;
-  min-height: min(620px, 80vh);
-  background: rgba(255, 245, 249, 0.9);
-  border-radius: 32px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  width: min(800px, 92vw);
+  max-height: 85vh;
+  background: rgba(255, 245, 249, 0.92);
+  border-radius: 28px;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 20px 50px rgba(12, 6, 14, 0.35);
 }
 
 #fireworks-canvas {
@@ -716,10 +544,10 @@ main.pages {
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.8rem;
   align-items: center;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 
 .bouquet {
@@ -744,13 +572,13 @@ main.pages {
 }
 
 .celebration-love-image {
-  width: min(500px, 70vw);
+  width: min(380px, 60vw);
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  margin: 0.5rem 0 1rem;
+  margin: 0.25rem 0 0.75rem;
   display: block;
-  filter: drop-shadow(0 12px 24px rgba(255, 91, 123, 0.25));
+  filter: drop-shadow(0 12px 22px rgba(255, 91, 123, 0.25));
   animation: gentle-float-image 3s ease-in-out infinite;
   border-radius: 16px;
 }
@@ -765,32 +593,61 @@ main.pages {
 }
 
 .celebration-date {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--color-accent-dark);
   background: rgba(255, 255, 255, 0.9);
-  padding: 0.6rem 1.2rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   font-weight: 600;
 }
 
 .celebration-message {
   font-family: var(--font-title);
-  font-size: clamp(1.6rem, 2.5vw + 1rem, 2.8rem);
+  font-size: clamp(1.4rem, 2vw + 1rem, 2.3rem);
+  margin: 0;
 }
 
 .celebration-back-btn {
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
   white-space: nowrap;
   min-width: fit-content;
 }
 
 .together-counter {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-accent-dark);
   background: rgba(255, 255, 255, 0.85);
-  padding: 0.8rem 1.4rem;
+  padding: 0.6rem 1.2rem;
   border-radius: 999px;
+  margin-top: 0.25rem;
+}
+
+.music-toggle-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-accent-dark);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.music-toggle-btn:hover,
+.music-toggle-btn:focus {
+  background: var(--color-accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.music-toggle-btn:focus-visible {
+  outline: 3px solid rgba(255, 91, 123, 0.4);
+  outline-offset: 2px;
 }
 
 .couple-illustration {
@@ -873,8 +730,8 @@ main.pages {
   }
 
   .celebration-love-image {
-    width: min(450px, 75vw);
-    margin: 0.4rem 0 0.9rem;
+    width: min(340px, 70vw);
+    margin: 0.35rem 0 0.85rem;
   }
 
   .celebration-back-btn {
@@ -903,18 +760,6 @@ main.pages {
 
   .intro-image {
     filter: drop-shadow(0 12px 24px rgba(255, 91, 123, 0.2));
-  }
-
-  .balloon {
-    font-size: 1.5rem;
-  }
-
-  .sparkle {
-    font-size: 1.2rem;
-  }
-
-  .heart-fall {
-    font-size: 1.4rem;
   }
 
   .timeline-content {
@@ -963,25 +808,25 @@ main.pages {
   }
 
   .celebration-love-image {
-    width: min(400px, 85vw);
-    margin: 0.3rem 0 0.8rem;
-    filter: drop-shadow(0 8px 16px rgba(255, 91, 123, 0.2));
+    width: min(280px, 80vw);
+    margin: 0.25rem 0 0.7rem;
+    filter: drop-shadow(0 6px 12px rgba(255, 91, 123, 0.2));
   }
 
   .celebration-message {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .celebration-back-btn {
-    font-size: 0.9rem;
-    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+    padding: 0.7rem 1.4rem;
     width: auto;
     max-width: 90%;
   }
 
   .together-counter {
-    font-size: 0.95rem;
-    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.9rem;
   }
 }
 

@@ -8,8 +8,6 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
     <title>给卓扬的告白</title>
-  <!-- favicon: 红色爱心（内联 SVG data URL） -->
-  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23e11a23' d='M50 91s-34-20.4-34-44.4C16 28.7 28.7 16 38.8 16 44.7 16 50 19.4 50 19.4s5.3-3.4 11.2-3.4C71.3 16 84 28.7 84 46.6 84 70.6 50 91 50 91z'/></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,28 +29,11 @@
 
     <main class="pages">
       <section class="page page-intro" id="intro">
-        <div class="intro-decorations">
-          <div class="balloon balloon-1">🎈</div>
-          <div class="balloon balloon-2">🎈</div>
-          <div class="balloon balloon-3">🎈</div>
-          <div class="balloon balloon-4">🎈</div>
-          <div class="balloon balloon-5">🎈</div>
-          <div class="sparkle sparkle-1">✨</div>
-          <div class="sparkle sparkle-2">✨</div>
-          <div class="sparkle sparkle-3">✨</div>
-          <div class="sparkle sparkle-4">✨</div>
-          <div class="sparkle sparkle-5">✨</div>
-          <div class="heart-fall heart-1">💕</div>
-          <div class="heart-fall heart-2">💖</div>
-          <div class="heart-fall heart-3">💗</div>
-          <div class="heart-fall heart-4">💝</div>
-          <div class="heart-fall heart-5">💕</div>
-        </div>
         <div class="intro-image-container">
           <img src="首页图案.png" alt="浪漫的告白图案" class="intro-image" />
         </div>
-        <p class="section-title">
-          <h2 class="section-title">写给卓扬的全世界独一无二的告白网站</h2>
+        <p class="intro-caption">
+          写给卓扬的全世界独一无二的告白网站
         </p>
       </section>
 
@@ -207,6 +188,15 @@
         <div class="celebration-overlay" id="celebration-overlay" aria-hidden="true">
           <div class="celebration-inner">
             <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
+            <button
+              class="music-toggle-btn"
+              id="btn-music-toggle"
+              type="button"
+              aria-label="关闭音乐"
+              aria-pressed="false"
+            >
+              🔈
+            </button>
             <div class="celebration-content">
               <img src="love.png" alt="浪漫的情侣插画" class="celebration-love-image" />
               <p class="celebration-date" id="celebration-date"></p>

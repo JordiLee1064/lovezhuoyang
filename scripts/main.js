@@ -7,6 +7,7 @@
   const YES_BUTTON = document.getElementById("btn-yes");
   const THINK_BUTTON = document.getElementById("btn-think");
   const TOP_BUTTON = document.getElementById("btn-top");
+  const MUSIC_TOGGLE_BUTTON = document.getElementById("btn-music-toggle");
   const BACK_STORY_BUTTON = document.getElementById("btn-back-story");
   const GENTLE_NOTE = document.getElementById("gentle-note");
   const CELEBRATION_OVERLAY = document.getElementById("celebration-overlay");
@@ -27,6 +28,7 @@
   let togetherStart = null;
   let currentSectionIndex = 0;
   let wheelLocked = false;
+  let musicManuallyPaused = false;
 
   /**
    * Utilities
@@ -272,6 +274,42 @@
   };
 
   /**
+   * Music controls
+   */
+  const updateMusicToggleState = () => {
+    if (!MUSIC_TOGGLE_BUTTON || !BGM) return;
+    const isPlaying = !BGM.paused && !BGM.ended;
+    MUSIC_TOGGLE_BUTTON.textContent = isPlaying ? "🔊" : "🔇";
+    MUSIC_TOGGLE_BUTTON.setAttribute("aria-pressed", isPlaying ? "false" : "true");
+    MUSIC_TOGGLE_BUTTON.setAttribute("aria-label", isPlaying ? "关闭音乐" : "开启音乐");
+  };
+
+  if (MUSIC_TOGGLE_BUTTON) {
+    MUSIC_TOGGLE_BUTTON.addEventListener("click", () => {
+      if (!BGM) return;
+      if (BGM.paused) {
+        musicManuallyPaused = false;
+        BGM.play()
+          .then(() => {
+            updateMusicToggleState();
+          })
+          .catch(() => {
+            musicManuallyPaused = true;
+          });
+      } else {
+        musicManuallyPaused = true;
+        BGM.pause();
+        updateMusicToggleState();
+      }
+    });
+  }
+
+  if (BGM) {
+    BGM.addEventListener("play", updateMusicToggleState);
+    BGM.addEventListener("pause", updateMusicToggleState);
+  }
+
+  /**
    * Update celebration date display
    */
   const updateCelebrationDate = () => {
@@ -290,11 +328,14 @@
    * Background music
    */
   const tryPlayMusic = () => {
-    if (!BGM) return;
+    if (!BGM || musicManuallyPaused) return;
     BGM.currentTime = 0;
     BGM.volume = 0.5;
     BGM
       .play()
+      .then(() => {
+        updateMusicToggleState();
+      })
       .catch(() => {
         console.warn("自动播放失败，等待用户交互。");
       });
@@ -431,6 +472,8 @@
       }
     });
   }
+
+  updateMusicToggleState();
 
   /**
    * Cleanup on page hide/unload
